@@ -1,3 +1,12 @@
+Inicio
+  al inicio de la semana, registrar los productos y su cantidad en el inventario
+  al final de la misma semana, registrar cuantos productos fueron vendidos
+
+el programa resta la cantidad inicial de productos menos la final
+
+
+
+
 Si producto 'x' hay 10 o menos piezas en inventario
   notificar "producto x esta proximo a agotarse, hacer pedido urgente"
 
