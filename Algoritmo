@@ -1,0 +1,11 @@
+Si producto 'x' hay 10 o menos piezas en inventario
+  notificar "producto x esta proximo a agotarse, hacer pedido urgente"
+
+Si producto 'x' hay de 11 a 17 piezas en inventario
+  notificar 'producto x proximo a agotarse, recomiendo hacer pedido"
+
+Si producto 'x' hay 0 piezas en inventario
+  notificar 'producto x agotado.'
+
+si producto 'x'
+
