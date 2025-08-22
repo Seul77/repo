@@ -4,6 +4,9 @@ Inicio
 
 el programa resta la cantidad inicial de productos menos la final
 
+cuando el trabajador quiera ver la cantidad de articulos disponibles
+  buscar producto 'x'
+
 Si producto 'x' hay 0 piezas en inventario
   notificar 'producto x agotado.'
 Si producto 'x' hay 10 o menos piezas en inventario
@@ -14,5 +17,4 @@ si producto 'x' tiene 21 o mas piezas en inventario
   notificar "producto x aun disponible, no hacer pedido es recomendado"
 
 
-si producto 'x'
 
