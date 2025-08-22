@@ -9,12 +9,19 @@ cuando el trabajador quiera ver la cantidad de articulos disponibles
 
 Si producto 'x' hay 0 piezas en inventario
   notificar 'producto x agotado.'
+
 Si producto 'x' hay 10 o menos piezas en inventario
+  mostrar la cantidad de productos en inventario
   notificar "producto x esta proximo a agotarse, hacer pedido urgente"
+
 Si producto 'x' hay de 11 a 20 piezas en inventario
+ mostrar la cantidad de productos en inventario
   notificar 'producto x proximo a agotarse, hacer pedido es recomendado"
+
 si producto 'x' tiene 21 o mas piezas en inventario
+ mostrar la cantidad de productos en inventario
   notificar "producto x aun disponible, no hacer pedido es recomendado"
+
 
 
 
