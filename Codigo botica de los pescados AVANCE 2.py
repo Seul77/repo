@@ -1,10 +1,16 @@
 primero = input("Buen dia, escriba '1' para registrar productos en el sistema, escriba '2' para revisar disponibilidad de productos, escriba '3' para hacer el reporte de ventas: ")
-
+        
 if primero == "1":
     p = input("Muy bien, por favor introduzca el nombre del articulo: ")
-    x = int(input("Gracias, ahora introduzca la cantidad de '"+p+"' que se va a agregar al inventario: "))
-    vi = 0
-    z = x+vi
+    prod = input("Ok, presione '5' si este articulo ya estaba en el inventario, presione '6' si es nuevo y no habia en inventario: ")
+    if prod == "5":
+        vi = int(input ("Por favor introduzca la cantidad que ya estaba en inventario: "))
+        x = int(input("Gracias, ahora introduzca la cantidad de '"+p+"' que se va a agregar al inventario: "))
+        z = vi + x
+    elif prod == "6":
+        vi = 0
+        x = int(input("Gracias, ahora introduzca la cantidad de '"+p+"' que se va a agregar al inventario: "))
+        z = vi + x
     print ("¡Gracias!, ahora la cantidad actual de '"+p+"' es de ", z, ".")
 
 elif primero == "2":
