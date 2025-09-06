@@ -3,14 +3,13 @@ primero = input("Buen dia, escriba '1' para registrar productos en el sistema, e
 if primero == "1":
     p = input("Muy bien, por favor introduzca el nombre del articulo: ")
     x = int(input("Gracias, ahora introduzca la cantidad de '"+p+"' que se va a agregar al inventario: "))
-    y = 0
-    z = x+y
+    vi = 0
+    z = x+vi
     print ("¡Gracias!, ahora la cantidad actual de '"+p+"' es de ", z, ".")
 
 elif primero == "2":
 #en este paso aun no se como hacer para definir que "z" es el valor que se da antes
     q = input("Claro, introduzca el nombre del articulo: ")
-    q =
 #aqui igual no se como hacer para que con solo el nombre, el programa sepa que articulo es y con base a su nombre y los datos ya antes dados sepa cuanto queda y asi hacer las operaciones
     qq = z
     if qq==0:
