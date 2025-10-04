@@ -1,6 +1,6 @@
 #cantidad de productos inicial:
 #estos son los articulos disponibles y su cantidad
-#el README fue actualizado
+#el avance es este diccionario, el profe me dijo que si contaba como avance de como lista
 productos= {
 "pomada":20,
 "paracetamol":16,
@@ -90,3 +90,4 @@ def ciclo_inicial():
 
 
 (ciclo_inicial())
+
