@@ -19,7 +19,8 @@ def ciclo_inicial():
                     "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
                     "Escriba 'actualizar' para actualizar el precio de algun articulo"'\n'
                     "O escriba 'salir' si quiere concluir con el programa: ")
-    while primero != 'registro' or primero != 'revision' or primero != 'reporte' or primero != 'salir' or primero != 'actualizar':
+    while primero != 'registro' and primero != 'revision' and primero != 'reporte' and primero != 'salir' and primero != 'actualizar':
+        primero = input("Hmm, tal vez lo escribiste mal, revisa tu ortografía e inténtalo de nuevo: ")
 
         if primero == "registro":
             registro_de_productos()
