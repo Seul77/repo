@@ -18,23 +18,20 @@ def ciclo_inicial():
                     "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
                     "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
                     "Escriba 'actualizar' para actualizar el precio de algun articulo"'\n'
-                    "O escriba 'salir' si quiere concluir con el programa: ")
-    while primero != 'registro' and primero != 'revision' and primero != 'reporte' and primero != 'salir' and primero != 'actualizar':
-        primero = input("Hmm, tal vez lo escribiste mal, revisa tu ortografía e inténtalo de nuevo: ")
+                    "O escriba 'salir' si quiere concluir con el programa: ")    
 
-        if primero == "registro":
-            registro_de_productos()
-        elif primero == "revision":
-            revision_de_productos()
-        elif primero == "reporte":
-            reporte_de_ventas()
-        elif primero == "actualizar":
-            actualizar_precio()
-        elif primero == 'salir':
-            print ('\n''Gracias! Nos vemos pronto :)''\n')
-            break
-        else:
-            primero=input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
+    if primero == "registro":
+        registro_de_productos()
+    elif primero == "revision":
+        revision_de_productos()
+    elif primero == "reporte":
+        reporte_de_ventas()
+    elif primero == "actualizar":
+        actualizar_precio()
+    elif primero == 'salir':
+        print ('\n''Gracias! Nos vemos pronto :)''\n')
+    else:
+        input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
 
         
 def registro_de_productos():
