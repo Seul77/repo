@@ -11,27 +11,30 @@ productos= {
 
 
 def ciclo_inicial():
-    global productos #investigue por mi cuenta que el comando global hace que declara que una variable existe fuera de la funcion,
+        global productos #investigue por mi cuenta que el comando global hace que declara que una variable existe fuera de la funcion,
                      #haciendo que pueda modificar su valor y este guardado mientras el programa este operando.
-    primero = input("Buen dia,"'\n'
-                    "Escriba 'registro' para registrar productos en el sistema," '\n'
-                    "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
-                    "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
-                    "Escriba 'actualizar' para actualizar el precio de algun articulo"'\n'
-                    "O escriba 'salir' si quiere concluir con el programa: ")    
 
-    if primero == "registro":
-        registro_de_productos()
-    elif primero == "revision":
-        revision_de_productos()
-    elif primero == "reporte":
-        reporte_de_ventas()
-    elif primero == "actualizar":
-        actualizar_precio()
-    elif primero == 'salir':
-        print ('\n''Gracias! Nos vemos pronto :)''\n')
-    else:
-        input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
+        primero = input("Buen dia,"'\n'
+                        "Escriba 'registro' para registrar productos en el sistema," '\n'
+                        "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
+                        "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
+                        "Escriba 'actualizar' para actualizar el precio de algun articulo"'\n'
+                        "O escriba 'salir' si quiere concluir con el programa: ")
+        while True:
+
+            if primero == "registro":
+                registro_de_productos()
+            elif primero == "revision":
+                revision_de_productos()
+            elif primero == "reporte":
+                reporte_de_ventas()
+            elif primero == "actualizar":
+                actualizar_precio()
+            elif primero == 'salir':
+                print ('\n''Gracias! Nos vemos pronto :)''\n')
+                break
+            else:
+                primero = input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
 
         
 def registro_de_productos():
