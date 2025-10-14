@@ -1,3 +1,4 @@
+import sys
 #cantidad de productos inicial y sus respectivos precios iniciales:
 #para el nuevo avance, inclui esta matriz para poder tener tambien los precios de los productos
 productos= {
@@ -32,9 +33,10 @@ def ciclo_inicial():
                 actualizar_precio()
             elif primero == 'salir':
                 print ('\n''Gracias! Nos vemos pronto :)''\n')
-                break
+                sys.exit()
             else:
                 primero = input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
+            
 
         
 def registro_de_productos():
@@ -97,11 +99,11 @@ def actualizar_precio():
     jk=input("Introduzca el nombre del articulo cuyo precio desea actualizar: ")
     if jk in productos:
         precio_actual=productos[jk]["precio"]
-        print ("Su precio actual es de",precio_actual,".")
+        print ('\n'"Su precio actual es de $",precio_actual,"MXN,"'\n')
         ok=input("Introduzca el nuevo precio: ")
         precio_nuevo=float(ok)
         productos[jk]['precio']=precio_nuevo
-        print('\n'"El nuevo precio de ",jk, " es de: " ,precio_nuevo,'\n')
+        print('\n'"El nuevo precio de ",jk, " es de: $" ,precio_nuevo,"MXN"'\n')
     else:
         print('\n'"No encuentro el articulo ", jk, ", revisa tu ortografia e intentalo nuevamente."'\n')
     return ciclo_inicial()
