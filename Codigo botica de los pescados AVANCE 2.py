@@ -1,114 +1,152 @@
 import sys
-#cantidad de productos inicial y sus respectivos precios iniciales:
-#para el nuevo avance, inclui esta matriz para poder tener tambien los precios de los productos
-productos= {
-"pomada": {"cantidad": 20, "precio": 55.00},
-"paracetamol": {"cantidad": 16, "precio": 12.50},
-"jabon": {"cantidad": 16, "precio": 35.00},
-"cerave": {"cantidad": 20, "precio": 250.00},
-"bloqueador": {"cantidad": 18, "precio": 150.00},
-"shampoo": {"cantidad": 10, "precio": 80.00}
+import time
+
+productos = {
+    "pomada": {"cantidad": 20, "precio": 55.00},
+    "paracetamol": {"cantidad": 16, "precio": 12.50},
+    "jabon": {"cantidad": 16, "precio": 35.00},
+    "cerave": {"cantidad": 20, "precio": 250.00},
+    "bloqueador": {"cantidad": 18, "precio": 150.00},
+    "shampoo": {"cantidad": 10, "precio": 80.00},
 }
 
 
-def ciclo_inicial():
-        global productos #investigue por mi cuenta que el comando global hace que declara que una variable existe fuera de la funcion,
-                     #haciendo que pueda modificar su valor y este guardado mientras el programa este operando.
+stock_minimo = 10
+stock_ideal = 25
 
-        primero = input("Buen dia,"'\n'
-                        "Escriba 'registro' para registrar productos en el sistema," '\n'
+
+def registro_de_productos(inventario, nombre_articulo, cantidad_a_agregar):
+    if nombre_articulo not in inventario:
+        return '\n'"Hmm, no encuentro el producto "+str(nombre_articulo)+", revisa tu ortografia e intentalo de nuevo."'\n'
+    inventario[nombre_articulo]["cantidad"] += cantidad_a_agregar
+    nueva_cantidad = inventario[nombre_articulo]["cantidad"]
+    return '\n'"¡Gracias!, ahora la cantidad actual de '"+str(nombre_articulo)+"' es de " +str(productos[nombre_articulo]['cantidad'])+ '.\n'
+
+
+def revision_de_productos(inventario, nombre_articulo):
+    if nombre_articulo not in inventario:
+        return '\n'"Hmm, no encuentro el producto "+str(nombre_articulo)+", revisa tu ortografia e intentalo de nuevo."'\n'
+
+    cantidad = inventario[nombre_articulo]["cantidad"]
+
+    if cantidad == 0:
+        return '\n'+str(nombre_articulo)+ " agotado.\n"
+    elif cantidad <= stock_minimo:
+        return "Solo quedan " +str(productos[nombre_articulo]['cantidad'])+ " unidades de " +str(nombre_articulo)+". Pedido urgente."
+    elif cantidad < stock_ideal:
+        return "Quedan "+str(productos[nombre_articulo]['cantidad'])+" unidades de " +str(nombre_articulo)+". Pedido recomendable."
+    elif cantidad >= stock_ideal:    
+        return "Quedan "+str(productos[nombre_articulo]['cantidad'])+" de " +str(nombre_articulo)+". Pedido no necesario."
+
+def reporte_de_ventas(inventario, nombre_articulo, cantidad_vendida):
+    if nombre_articulo not in inventario:
+        return '\n'"Hmm, no encuentro el producto "+str(nombre_articulo)+", revisa tu ortografia e intentalo de nuevo."'\n'
+    
+    cantidad_disponible = inventario[nombre_articulo]["cantidad"]
+    cantidad_actual = cantidad_disponible - cantidad_vendida
+
+    if cantidad_actual < 0:
+        return '\n'"Hmm, el numero de ventas es mayor al numero de articulos en el inventario. Revisa bien los datos e intentalo de nuevo."'\n'
+
+    inventario[nombre_articulo]["cantidad"] = cantidad_actual
+
+    if cantidad_actual == 0:
+        return str(nombre_articulo)+" se ha agotado. Pedido necesario."
+    elif cantidad_actual <= stock_minimo:
+        return str(nombre_articulo)+" tiene "+str(cantidad_actual)+ " unidades. Pedido recomendable."
+    elif cantidad_actual <= stock_ideal:
+        return str(nombre_articulo)+" tiene "+str(cantidad_actual)+ " unidades. Pedido puede ser recomendable."
+    elif cantidad_actual >= stock_ideal:
+        return str(nombre_articulo)+" tiene "+str(cantidad_actual)+ " unidades. Pedido no necesario."
+
+
+def actualizar_precio(inventario, nombre_articulo, nuevo_precio):
+    if nombre_articulo not in inventario:
+        return '\n'"No encuentro el producto "+str(nombre_articulo)+", revisa tu ortografia e intentalo de nuevo."'\n'
+    else:
+        inventario[nombre_articulo]["precio"] = nuevo_precio
+        precio_actual=productos[nombre_articulo]["precio"]
+        return '\n'"El nuevo precio de "+str(nombre_articulo)+ " es de: $"+str(nuevo_precio)+"MXN"'\n'
+
+
+
+def ciclo_inicial(inventario):
+    print("Buen dia,")
+    while True:
+        time.sleep(0.8)
+        opcion = input("Escriba 'registro' para registrar productos en el sistema," '\n'
                         "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
                         "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
                         "Escriba 'actualizar' para actualizar el precio de algun articulo"'\n'
                         "O escriba 'salir' si quiere concluir con el programa: ")
-        while True:
 
-            if primero == "registro":
-                registro_de_productos()
-            elif primero == "revision":
-                revision_de_productos()
-            elif primero == "reporte":
-                reporte_de_ventas()
-            elif primero == "actualizar":
-                actualizar_precio()
-            elif primero == 'salir':
-                print ('\n''Gracias! Nos vemos pronto :)''\n')
-                sys.exit()
-            else:
-                primero = input('Hmm, tal vez lo escribiste mal, revisa tu ortografia e intentalo de nuevo: ')
-            
+        if opcion == "registro":
+            nombre = input("Muy bien, por favor introduzca el nombre del articulo para registrar:"'\n'
+                           "Lista de artículos:"'\n'
+                           "- pomada"'\n'
+                           "- paracetamol"'\n'
+                           "- jabon" '\n'
+                           "- cerave"'\n'
+                           "- bloqueador"'\n'
+                           "- shampoo"'\n')
+            cantidad = int(input("Gracias, ahora introduzca la cantidad de '"+str(nombre)+"' que se va a agregar al inventario: "))
+            mensaje = registro_de_productos(inventario, nombre, cantidad)
+            print("\n"+mensaje+"\n")
 
-        
-def registro_de_productos():
-    global productos
-    p = input("Muy bien, por favor introduzca el nombre del articulo para registrar: ")
-    if p in productos:
-        x = int(input("Gracias, ahora introduzca la cantidad de '"+p+"' que se va a agregar al inventario: "))
-        productos[p]["cantidad"] += x
-        print ('\n'"¡Gracias!, ahora la cantidad actual de '"+p+"' es de " +str(productos[p]['cantidad'])+ ".\n")
-    else:
-        print ('\n'"Hmm, no encuentro el producto "+p+", revisa tu ortografia e intentalo de nuevo."'\n')
-    return ciclo_inicial()    
-    
-        
-def revision_de_productos():
-    global productos
-    q = input("Claro, introduzca el nombre del articulo: ")
-    if q in productos:
-        cantidad = productos.get(q)['cantidad']
-        if cantidad==0:
-            print('\n',q, "agotado.\n")
-        elif cantidad > 0 and cantidad <=10:
-            print('\n'"Solo quedan", cantidad,"unidades, hacer pedido urgente.\n")
-        elif cantidad>=11 and cantidad<=25:
-            print('\n'"Quedan", cantidad,"unidades de "+q+", hacer pedido es recomendado.\n")
-        elif cantidad>25:
-            print('\n'"Quedan", cantidad,"unidades. Hacer pedido no es necesario\n")
-    else:
-        print ('\n'"Hmm, no encuentro el producto "+q+", revisa tu ortografia e intentalo de nuevo."'\n')
-    return ciclo_inicial()    
+        elif opcion == "revision":
+            nombre = input("Por supuesto, introduzca el nombre del articulo: "'\n'
+                           "Lista de artículos:"'\n'
+                           "- pomada"'\n'
+                           "- paracetamol"'\n'
+                           "- jabon" '\n'
+                           "- cerave"'\n'
+                           "- bloqueador"'\n'
+                           "- shampoo"'\n')
+            mensaje = revision_de_productos(inventario, nombre)
+            print("\n",mensaje,"\n")
 
-            
-def reporte_de_ventas():
-    global productos
-    pp = input("¡Claro!, por favor introduzca el nombre del articulo que se vendió: ")
-    if pp in productos:
-        xx = int(input("Gracias, ahora introduzca la cantidad de "+pp+" que se vendio esta semana: ")) 
-        cantidad_actual = productos[pp]["cantidad"]
-        zz = cantidad_actual - xx
-        if zz < 0:
-            print ('\n'"Hmm, el numero de ventas es mayor al numero de articulos en el inventario. Revisa bien los datos e intentalo de nuevo.")
+        elif opcion == "reporte":
+            nombre = input("¡Claro!, por favor introduzca el nombre del articulo que se vendió: "'\n'
+                           "Lista de artículos:"'\n'
+                           "- pomada"'\n'
+                           "- paracetamol"'\n'
+                           "- jabon" '\n'
+                           "- cerave"'\n'
+                           "- bloqueador"'\n'
+                           "- shampoo"'\n')
+            cantidad = int(input("Gracias, ahora introduzca la cantidad vendida: "))
+            mensaje = reporte_de_ventas(inventario, nombre, cantidad)
+            print("\n",mensaje,"\n")
+
+        elif opcion == "actualizar":
+            nombre_articulo = input("Introduzca el nombre del articulo cuyo precio desea actualizar: "'\n'
+                                    "Lista de artículos:"'\n'
+                           "- pomada"'\n'
+                           "- paracetamol"'\n'
+                           "- jabon" '\n'
+                           "- cerave"'\n'
+                           "- bloqueador"'\n'
+                           "- shampoo"'\n')
+            precio_actual=productos[nombre_articulo]["precio"]
+            print ('\n'"Su precio actual es de $"+str(precio_actual)+"MXN,"'\n')
+            precio = float(input("Nuevo precio: "))
+            mensaje = actualizar_precio(inventario, nombre_articulo, precio)
+            print("\n",mensaje,"\n")
+
+        elif opcion == "salir":
+            print ('\n''Gracias!')
+            time.sleep(0.6)
+            print('Nos vemos pronto :)''\n')
+            time.sleep(0.5)
+            sys.exit()
+
         else:
-            productos[pp]["cantidad"] = zz 
-            if zz == 0:
-                print ('\n'"¡El producto '",pp,"' esta agotado! Es necesario hacer pedido.\n")
-            elif zz > 0 and zz <=10:
-                print ('\n'"¡Gracias!, ahora la cantidad actual de '",pp,"' es de ", zz, ", se requiere hacer pedido.\n")
-            elif zz >=11 and zz <=20:
-                print ('\n'"¡Gracias!, ahora la cantidad actual de '",pp,"' es de ", zz, ", hacer pedido es recomendado\n")
-            elif zz>20:
-                print ('\n'"¡Gracias!, ahora la cantidad actual de '",pp,"' es de ", zz, ". Hacer pedido no es necesario.\n")
-    else:
-        print ('\n'"Hmm, no encuentro el producto "+pp+", revisa tu ortografia e intentalo de nuevo."'\n')
-    return ciclo_inicial()    
+            print('Hmm,')
+            time.sleep(0.5)
+            print('tal vez lo escribiste mal.')
+            time.sleep(1)
+            print('Revisa tu ortografia e intentalo de nuevo.''\n')
 
 
-
-def actualizar_precio():
-    global productos
-    jk=input("Introduzca el nombre del articulo cuyo precio desea actualizar: ")
-    if jk in productos:
-        precio_actual=productos[jk]["precio"]
-        print ('\n'"Su precio actual es de $",precio_actual,"MXN,"'\n')
-        ok=input("Introduzca el nuevo precio: ")
-        precio_nuevo=float(ok)
-        productos[jk]['precio']=precio_nuevo
-        print('\n'"El nuevo precio de ",jk, " es de: $" ,precio_nuevo,"MXN"'\n')
-    else:
-        print('\n'"No encuentro el articulo ", jk, ", revisa tu ortografia e intentalo nuevamente."'\n')
-    return ciclo_inicial()
-
-(ciclo_inicial())
-
-
+ciclo_inicial(productos)
 
