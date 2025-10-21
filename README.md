@@ -7,18 +7,20 @@ Para resolver este problema, mi programa va a estar al tanto de los productos qu
 
 Instrucciones: 
 1. Descarga el codigo
-2. Corre el codigo en la terminal
-3. Primero que nada, ingresa la cantidad de produccto que hay para algun producto (ej. pomada, cantidad a agregar: 30, paracetamol, cantidad a agregar: 25,...)
-4. Ya que tienes eso, puedes hacer libremente las siguientes operaciones (registro, revision, reporte, actualizar)
-5. Cuando hayas terminado, escribe 'salir' para terminar el programa.
+2. Codigo botica de los pescados.py
+3. Corre el codigo en la terminal
+4. Primero que nada, ingresa la cantidad de produccto que hay para algun producto (ej. pomada, cantidad a agregar: 30, paracetamol, cantidad a agregar: 25,...)
+5. Ya que tienes eso, puedes hacer libremente las siguientes operaciones (registro, revision, reporte, actualizar)
+6. Cuando hayas terminado, escribe 'salir' para terminar el programa.
 
 Algoritmo: 
 
-en el registro:
+En el registro:
 
 Producto x tiene 0 de cantidad inicial.
 
 Para registrar, cantidad de producto x + cantidad a agregar
+Ahora esa cantidad se hace la cantidad actual.
 
 si producto x tiene menos de la cantidad ideal, notificar pedido
 si producto x tiene mas de la cantidad ideal, notificar que pedido es opcional
