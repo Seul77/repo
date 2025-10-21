@@ -14,7 +14,10 @@ Instrucciones:
 
 Algoritmo: 
 
+en el registro:
+
 Producto x tiene 0 de cantidad inicial.
+
 Para registrar, cantidad de producto x + cantidad a agregar
 
 si producto x tiene menos de la cantidad ideal, notificar pedido
