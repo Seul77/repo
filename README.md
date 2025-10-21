@@ -22,9 +22,18 @@ Producto x tiene 0 de cantidad inicial.
 Para registrar, cantidad de producto x + cantidad a agregar
 Ahora esa cantidad se hace la cantidad actual.
 
+
+En revision:
+
 si producto x tiene menos de la cantidad ideal, notificar pedido
 si producto x tiene mas de la cantidad ideal, notificar que pedido es opcional
 
+
+En reporte:
+
 Si producto x tuvo 5 (por ejemplo) ventas en la semana, se le resta a la cantidad que se tenia, y dependiendo de su cantidad final, notificar pedido necesario o no.
+
+
+En actualizar:
 
 Si producto x tiene un precio inicial de 40 (por ejemplo), actualizar su precio y que ahora su precio actual sea el que se le da.
