@@ -13,6 +13,7 @@ Instrucciones:
 5. Cuando hayas terminado, escribe 'salir' para terminar el programa.
 
 Algoritmo: 
+
 Producto x tiene 0 de cantidad inicial.
 Para registrar, cantidad de producto x + cantidad a agregar
 
