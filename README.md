@@ -9,7 +9,7 @@ Instrucciones:
 1. Descarga el codigo
 2.     Codigo botica de los pescados.py
 3. Corre el codigo en la terminal
-4. Primero que nada, ingresa la cantidad de produccto que hay para algun producto (ej. pomada, cantidad a agregar: 30, paracetamol, cantidad a agregar: 25,...)
+4. Primero que nada, ingresa la cantidad de producto para cada uno usando 'registro', ya que la cantidad inicial de todos es 0 (ej. pomada, cantidad a agregar: 30, paracetamol, cantidad a agregar: 25,...)
 5. Ya que tienes eso, puedes hacer libremente las siguientes operaciones (registro, revision, reporte, actualizar)
 6. Cuando hayas terminado, escribe 'salir' para terminar el programa.
 
