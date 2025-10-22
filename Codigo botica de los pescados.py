@@ -3,8 +3,8 @@
 Proyecto final python
 Registro de inventario "Botica de los Pescados"
 El programa tiene articulos registrados en el sistema, el usuario puede
-ir actualizando su cantidad y precio con forme a las ventas y a la compra de
-productos
+ir actualizando su cantidad y precio con forme a las ventas y a la 
+compra de productos
 """
 
 """
@@ -16,9 +16,9 @@ import time
 
 """
 La biblioteca sys me ayuda a que cuando escriba el mensaje de salir, el
-programa se cierra y se termina con la operación. La biblioteca time ayuda
-a hacer ver el programa  un poco mas amigable, humano e interactico con el
-usuario, desplegando algunos mensajes linea por linea.
+programa se cierra y se termina con la operación. La biblioteca time 
+ayuda a hacer ver el programa  un poco mas amigable, humano e 
+interactivo con el usuario, mostrando algunos mensajes linea por linea
 """
 
 """
@@ -42,12 +42,12 @@ stock_minimo = 10
 stock_ideal = 25
 
 """
-Muestran la cantidad minima e ideal que debe haber de cada articulo, para
-despues ser usadas en las funciones revision y reporte
+Muestran la cantidad minima e ideal que debe haber de cada articulo, 
+para despues ser usadas en las funciones revision y reporte
 """
 
 """
-================ Funciones =================================
+================ Funciones ================================
 """
 
 def registro_de_productos(inventario, nombre_articulo, cantidad_a_agregar):
@@ -57,24 +57,25 @@ def registro_de_productos(inventario, nombre_articulo, cantidad_a_agregar):
     condicionales, uso de diccionario)
     Recibe inventario, lista anidada, nombre_articulo, string, 
     cantidad_a_agregar valor numerico. 
-    La funcion resgistro recibe el nombre (string) de un articulo que vaya a
-    ser registrado, si no esta en el inventario, devuelve un string que 
-    describe que no se encontro y regresa al menu principal. Si el articulo
-    si existe dentro de la lista, devuelve un mensaje pidiendo la cantidad 
-    que se desea sumar, y se suma a la cantidad inicial del producto, 
-    convirtiendo esa cantidad en la cantidad actual de ese articulo. Al final
-    devuelve un mensaje especificando la cantidad actual del producto.
+    La funcion resgistro recibe el nombre (string) de un articulo que 
+    vaya a ser registrado, si no esta en el inventario, devuelve un  
+    string que describe que no se encontro y regresa al menu principal.
+    Si el articulosi existe dentro de la lista, devuelve un mensaje 
+    pidiendo la cantidad que se desea sumar, y se suma a la cantidad  
+    inicial del producto, convirtiendo esa cantidad en la cantidad 
+    actual de ese articulo. Al final devuelve un mensaje especificando
+    la cantidad actual del producto.
     """ 
     
     if nombre_articulo not in inventario:
-        return ('\n'"Hmm, no encuentro el producto "+str(nombre_articulo)+
-                ", revisa tu ortografia e intentalo de nuevo."'\n')
+        return (f'\nHmm, no encuentro el producto {nombre_articulo}, '
+                f'revisa tu ortografia e intentalo de nuevo.\n')
     inventario[nombre_articulo]["cantidad"] += cantidad_a_agregar
     nueva_cantidad = inventario[nombre_articulo]["cantidad"]
    
-    return ('\n'"¡Gracias!, ahora la cantidad actual de '"
-            + str(nombre_articulo) + "' es de "
-            + str(productos[nombre_articulo]['cantidad']) + '.\n')
+    return (f'\n¡Gracias!, ahora la cantidad actual de '
+            f'"{nombre_articulo}" es de '
+            f'{productos[nombre_articulo]["cantidad"]}.\n')
 
 
 def revision_de_productos(inventario, nombre_articulo):
@@ -91,25 +92,25 @@ def revision_de_productos(inventario, nombre_articulo):
     """
     
     if nombre_articulo not in inventario:
-        return ('\n'"Hmm, no encuentro el producto " + str(nombre_articulo) +
-                ", revisa tu ortografia e intentalo de nuevo."'\n')
+        return (f'\nHmm, no encuentro el producto {nombre_articulo}, '
+                f'revisa tu ortografia e intentalo de nuevo.\n')
 
     cantidad = inventario[nombre_articulo]["cantidad"]
     
     if cantidad == 0:
-        return '\n' + str(nombre_articulo) +  " agotado.\n"
+        return f'\n{nombre_articulo} agotado.\n'
     
     elif cantidad <= stock_minimo:
-        return ("Solo quedan " + str(productos[nombre_articulo]['cantidad'])
-    + " unidades de " + str(nombre_articulo) + ". Pedido urgente.")
+        return (f'Solo quedan {productos[nombre_articulo]["cantidad"]} '
+                f'unidades de {nombre_articulo}. Pedido urgente.')
     
     elif cantidad < stock_ideal:
-        return ("Quedan " + str(productos[nombre_articulo]['cantidad'])
-    + " unidades de " + str(nombre_articulo) + ". Pedido recomendable.")
+        return (f'Quedan {productos[nombre_articulo]["cantidad"]} '
+                f'unidades de {nombre_articulo}. Pedido recomendable.')
     
     elif cantidad >= stock_ideal:    
-        return ("Quedan " + str(productos[nombre_articulo]['cantidad'])
-    + " unidades de " + str(nombre_articulo) + ". Pedido no necesario.")
+        return (f'Quedan {productos[nombre_articulo]["cantidad"]} '
+                f'unidades de {nombre_articulo}. Pedido no necesario.')
 
 
 def reporte_de_ventas(inventario, nombre_articulo, cantidad_vendida):
@@ -120,67 +121,68 @@ def reporte_de_ventas(inventario, nombre_articulo, cantidad_vendida):
     Recibe inventario, lista anidada, nombre_articulo, string,
     cantidad_vendida, valor numerico
     La funcion reporte de ventas recibe el nombre de un articulo para 
-    registrar la cantidad vendida. Si no encuentra el producto descrito, 
-    despliega un mensaje que dice que el articulo no existe y te manda de 
-    nuevo al menu. Si existe, pide la cantidad que fue vendida y en el
-    diccionario actualiza su cantidad actual, y a esta, le resta el numero 
-    dado que representa las ventas y esa nueva cantidad la convierte en la 
-    cantidad actual.
+    registrar la cantidad vendida. Si no encuentra el producto descrito
+    despliega un mensaje que dice que el articulo no existe y te manda
+    al menu. Si existe, pide la cantidad que fue vendida y en el
+    diccionario actualiza su cantidad actual, y a esta, le resta el 
+    numero dado que representa las ventas y esa nueva cantidad la  
+    convierte en la cantidad actual.
     """
 
     if nombre_articulo not in inventario:
-        return ('\n'"Hmm, no encuentro el producto " + str(nombre_articulo) +
-                ", revisa tu ortografia e intentalo de nuevo."'\n')
+        return (f'\nHmm, no encuentro el producto {nombre_articulo}, '
+                f'revisa tu ortografia e intentalo de nuevo.\n')
     
     cantidad_disponible = inventario[nombre_articulo]["cantidad"]
     cantidad_actual = cantidad_disponible - cantidad_vendida
 
     if cantidad_actual < 0:
-        return ('\n'"El numero de ventas es mayor al numero de articulos en"
-                " el inventario. Intentalo de nuevo."'\n')
+        return ('\nEl numero de ventas es mayor al numero de articulos en '
+                'el inventario. Intentalo de nuevo.\n')
 
     inventario[nombre_articulo]["cantidad"] = cantidad_actual
 
     if cantidad_actual == 0:
-        return (str(nombre_articulo) + " se ha agotado. Pedido necesario.")
+        return f'{nombre_articulo} se ha agotado. Pedido necesario.'
     
     elif cantidad_actual <= stock_minimo:
-        return (str(nombre_articulo) + " tiene "+str(cantidad_actual)+
-                " unidades. Pedido recomendable.")
+        return (f'{nombre_articulo} tiene {cantidad_actual} unidades. '
+                f'Pedido recomendable.')
     
     elif cantidad_actual <= stock_ideal:
-        return (str(nombre_articulo) + " tiene "+str(cantidad_actual)+
-                " unidades. Pedido puede ser recomendable.")
+        return (f'{nombre_articulo} tiene {cantidad_actual} unidades. '
+                f'Pedido puede ser recomendable.')
     
     elif cantidad_actual >= stock_ideal:
-        return (str(nombre_articulo) + " tiene "+str(cantidad_actual)+
-                " unidades. Pedido no necesario.")
+        return (f'{nombre_articulo} tiene {cantidad_actual} unidades. '
+                f'Pedido no necesario.')
 
 
 def actualizar_precio(inventario, nombre_articulo, nuevo_precio):
     
     """
-    (Uso de operadores, uso de funciones, uso de variables, uso de 
+    (Uso de operadores, uso de funciones, uso de variables, uso de
     condicionales, uso de diccionarios)
-    Recibe inventario, lista anidada, nombre_articulo, string, nuevo_precio,
-    valor numerico
-    La funcion actualizar recibe el nombre del articulo cuyo precio quiere 
-    ser actualizado. Si el articulo no existe dentro de la lista de articulos
-    devuelve un mensaje y te regresa al menu (ciclo_inicial). Al ccontrario,
-    si el articulo existe, te muestra el precio del articulo y pide el nuevo
-    precio que se quiere para el articulo. Cuando lo recibe, actualiza el 
-    precio en la lista del inventario y lo convierte en el precio actual.
+    Recibe inventario, lista anidada, nombre_articulo, string, 
+    nuevo_precio, valor numerico
+    La funcion actualizar recibe el nombre del articulo cuyo precio
+    quiere ser actualizado. Si el articulo no existe dentro de la lista
+    de articulos devuelve un mensaje y te regresa al menu 
+    (ciclo_inicial). Al contrario, si el articulo existe, te muestra
+    el precio del articulo y pide el nuevo precio que se quiere para el
+    articulo. Cuando lo recibe, actualiza el precio en la lista del 
+    inventario y lo convierte en el precio actual.
     """
 
     if nombre_articulo not in inventario:
-        return ('\n'"No encuentro el producto " + str(nombre_articulo) +
-    ", revisa tu ortografia e intentalo de nuevo."'\n')
+        return (f'\nNo encuentro el producto {nombre_articulo}, revisa tu '
+                f'ortografia e intentalo de nuevo.\n')
     
     else:
         inventario[nombre_articulo]["precio"] = nuevo_precio
         precio_actual = productos[nombre_articulo]["precio"]
-        return ('\n'"El nuevo precio de " + str(nombre_articulo) +
-    " es de: $" + str(nuevo_precio) + "MXN"'\n')
+        return (f'\nEl nuevo precio de {nombre_articulo} es de: '
+                f'${nuevo_precio}MXN\n')
 
 """
 =============Ciclo inicial===============================
@@ -188,24 +190,25 @@ def actualizar_precio(inventario, nombre_articulo, nuevo_precio):
 
 def ciclo_inicial(inventario):
     """
-    (uso de operadores, uso de inputs, uso de variables, uso de ciclos, uso
-    de condicionales, uso de librerias, uso de inputs, uso de funciones,
-    uso de librerias)
+    (uso de operadores, uso de inputs, uso de variables, uso de ciclos,
+    uso de condicionales, uso de librerias, uso de inputs, uso de 
+    funciones, uso de librerias)
     Recibe: inventario, lista anidada
-    Devuelve varias opciones. Mientras sea verdadero, muestra el menu de las
-    opciones. Si se escribe registro, manda a llamar a la funcion registro,
-    y cuando termina la funcion, regresa a este mismo menu. Asi con todas las
-    funciones, se repite y re repite el bucle hasta que se escribe 'salir',
-    la cual hace uso de la libreria sys y termina con el programa imprimiendo
-    un mensaje final. Igualmente, si se escribe mal algunaa opcion por error
-    de ortografia, imprime un mensaje y vuelve a correr el loop.
+    Devuelve varias opciones. Mientras sea verdadero, muestra el menu 
+    de las opciones. Si se escribe registro, manda a llamar a la 
+    funcion registro, y cuando termina la funcion, regresa a este mismo
+    menu. Asi con todas las funciones, se repite y re repite el bucle 
+    hasta que se escribe 'salir', la cual hace uso de la libreria sys
+    y termina con el programa imprimiendo un mensaje final. Igualmente,
+    si se escribe mal algunaa opcion por error de ortografia, imprime
+    un mensaje y vuelve a correr el loop.
     """
     
     print("Buen dia,")
     while True:
         time.sleep(0.8)
         opcion = input(
-            "Escriba 'registro' para registrar productos en el sistema," '\n'
+            "Escriba 'registro' para registrar productos en el sistema,"'\n'
             "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
             "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
             "Escriba 'actualizar' para cambiar el precio de un articulo"'\n'
@@ -225,10 +228,11 @@ def ciclo_inicial(inventario):
                            "- cerave"'\n'
                            "- bloqueador"'\n'
                            "- shampoo"'\n')
-            cantidad = int(input("Gracias, ahora introduzca la cantidad de '"
-                     + str(nombre) + "' que se va a agregar al inventario: "))
+            cantidad = int(input(
+                f"Gracias, ahora introduzca la cantidad de '{nombre}' que se "
+                f"va a agregar al inventario: "))
             mensaje = registro_de_productos(inventario, nombre, cantidad)
-            print("\n"+mensaje+"\n")
+            print(f"\n{mensaje}\n")
 
         elif opcion == "revision":
             """
@@ -245,7 +249,7 @@ def ciclo_inicial(inventario):
                            "- bloqueador"'\n'
                            "- shampoo"'\n')
             mensaje = revision_de_productos(inventario, nombre)
-            print("\n",mensaje,"\n")
+            print(f"\n{mensaje}\n")
 
         elif opcion == "reporte":
             """
@@ -266,7 +270,7 @@ def ciclo_inicial(inventario):
             
             mensaje = reporte_de_ventas(inventario, nombre, cantidad)
         
-            print("\n",mensaje,"\n")
+            print(f"\n{mensaje}\n")
             
         elif opcion == "actualizar":
             """
@@ -283,11 +287,10 @@ def ciclo_inicial(inventario):
                            "- bloqueador"'\n'
                            "- shampoo"'\n')
             precio_actual = productos[nombre_articulo]["precio"]
-            print ('\n'"Su precio actual es de $"+str(precio_actual)
-                   +"MXN,"'\n')
+            print (f'\nSu precio actual es de ${precio_actual}MXN,\n')
             precio = float(input("Nuevo precio: "))
             mensaje = actualizar_precio(inventario, nombre_articulo, precio)
-            print("\n",mensaje,"\n")
+            print(f"\n{mensaje}\n")
 
         elif opcion == "salir":
             """
