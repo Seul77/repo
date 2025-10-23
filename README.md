@@ -1,11 +1,11 @@
-Sistema de inventario "la Botica de los Pescados"
+# Sistema de inventario "La Botica de los Pescados"
 
-Contexto:
+## Contexto:
 La Botica de los Pescados es una farmacia naturista que se encuentra en un pequeño pueblo de Jalisco, es un negocio familiar que ha pasado de un pariente a otro. Hoy, tienen un sistema el cual les marca los productos que les indica solamente los productos que ya se vendieron. El problema es que los trabajadores manualmente tienen que hacer pedido de los productos que estan agotados o proximos a acodarse. Por esto los errores son comunes, por ejemplo no compran los suficientes productos necesarios para venderse, o compran productos de mas pensando que no habia en inventario. 
 
 Para resolver este problema, mi programa va a estar al tanto de los productos que esten proximos a agotarse, y cuando lo esten notificar que hay productos que necesitan comprarse. Tambien, cuando se haga un pedido para comprar productos, registrara la cantidad de productos comprados y conforme se vayan vendiendo el programa los descontara del sistema, asi se podra tener un control sobre ellos y no se va a tener que estar revisando fisicamente el inventario cada que se tenga la duda de la disponibilidad de un articulo. Esto dara facilidad y eficiencia al vendedor para brindar un servicio mas rapido y estar al tanto del inventario de la farmacia. 
 
-Instrucciones: 
+## Instrucciones: 
 1. Descarga el codigo
 2.     Codigo botica de los pescados.py
 3. Corre el codigo en la terminal
@@ -13,7 +13,7 @@ Instrucciones:
 5. Ya que tienes eso, puedes hacer libremente las siguientes operaciones (registro, revision, reporte, actualizar)
 6. Cuando hayas terminado, escribe 'salir' para terminar el programa.
 
-Algoritmo: 
+## Algoritmo: 
 
 En el registro:
 
