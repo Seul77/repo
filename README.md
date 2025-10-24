@@ -37,3 +37,8 @@ Si producto x tuvo 5 (por ejemplo) ventas en la semana, se le resta a la cantida
 En actualizar:
 
 Si producto x tiene un precio inicial de 40 (por ejemplo), actualizar su precio y que ahora su precio actual sea el que se le da.
+
+
+##### Bibliotecas:
+
+La biblioteca sys me ayuda a que, cuando se le indique el mensaje, el programa termine despues de la indicacion. La biblioteca time, me ayuda a hacer el codigo mas amigable con el usuario, para darle un toque humano y un poco mas lento para que el usuario pueda procesar facilmente lo que pasa. 
