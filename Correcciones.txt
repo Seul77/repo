@@ -1,0 +1,85 @@
+===========================Avance 1==================================
+Sub-Competencia: 
+	"plantea una situación problema que le permite aplicar y demostrar sus conocimientos de programación (avance 1) Crea correctamente un repositorio de programación en línea (avance 1)"
+
+
+Error original: 
+	Especifica una manera de implementar el uso de ciclos (for/while)
+
+Cambio realizado:
+	En el ReadMe no implemente el uso de ciclos while, pero en el código puse un ciclo en mi función principal usando la función while. 
+	while True:
+        time.sleep(0.8)
+        opcion = input(
+            "Escriba 'registro' para registrar productos en el sistema,"'\n'
+            "Escriba 'revision' para revisar disponibilidad de productos,"'\n'
+            "Escriba 'reporte' para hacer el reporte de ventas,"'\n'
+            "Escriba 'actualizar' para cambiar el precio de un articulo"'\n'
+            "O escriba 'salir' si quiere concluir con el programa: ")
+
+        if opcion == "registro":
+	...
+
+Líneas de código donde se ve la corrección: 208-317
+
+
+===========================Avance 3==================================
+Sub-Competencia: 
+	Separa el código en funciones pequeñas reusables, haciendo uso correcto de paso por parámetros y return (avance 3)
+
+Error original: 
+	No se definen funciones
+
+Cambio realizado:
+	Implemente una función para cada operación 
+	registro_de_productos(inventario, nombre_articulo, cantidad_a_agregar):
+	revision_de_productos(inventario, nombre_articulo):
+	reporte_de_ventas(inventario, nombre_articulo, cantidad_vendida):
+	actualizar_precio(inventario, nombre_articulo, nuevo_precio):
+	ciclo_inicial(inventario):
+
+
+Líneas de código donde se ve la corrección:
+	53-78 (registro), 81-113 (revision), 116-158 (reporte), 161-185 (actualizar), 191-314 (funcion principal)
+
+===========================Avance 5==================================
+Sub-Competencia: 
+	aplica estructuras cíclicas para resolver un problema de manera eficiente (avance 5)
+
+Error original: 
+	Bien, puedes agregar una manera de salir y que no se repita siempre (también con un while)
+
+Cambio realizado:
+	Importé la biblioteca "sys", así cada que se escriba el mensaje especificado de salir, se ejecuta sys.exit() y cierra el programa. 
+
+Líneas de código donde se ve la corrección:
+	la biblioteca importada se ve en la linea 14, y su uso esta dentro del elif de la linea 295, en la linea 303.
+
+===========================Avance 6==================================
+Sub-Competencia: 
+	usa la forma más a apropiada al problema para guardar los datos (listas, variable, tipo de dato, etc...) (avance 6)  (listas)
+
+Error original: 
+	Si bien las listas y variables están almacenadas, estas usando un número constante para el registro, es decir, si tienes 20 de un objeto y se registra una  venta de 2 se marca como que quedan 18, sin embargo si después se registra una venta de 5 se mientras que quedan 5 (sin contar la venta anterior)		
+
+
+Cambio realizado:
+	en la función registro, implemente un acumulador. Como la cantidad inicial de todo es 0, se va sumando la cantidad que quieres sumar. Y a esa, se vuelve la cantidad actual. 
+	inventario[nombre_articulo]["cantidad"] += cantidad_a_agregar
+   	nueva_cantidad = inventario[nombre_articulo]["cantidad"]
+
+ahora, para el la función reporte, implemente lo mismo. Como las variables se guardan en la lista de artículos, solo las mando a llamar en esta función y resto la cantidad actual por la cantidad que yo le indico. 
+	cantidad_disponible = inventario[nombre_articulo]["cantidad"]
+    	cantidad_actual = cantidad_disponible - cantidad_vendida
+
+Líneas de código donde se ve la corrección: 73-74 para registro, 136-137 para reporte.
+
+
+
+
+
+
+
+
+
+
